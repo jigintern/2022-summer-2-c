@@ -5,12 +5,10 @@ import {
   useLocation
 } from "react-router-dom";
 
+
 export default function Header() {
-  // const isTopPage = window.location
-  
-  // console.log(useLocation());
-  // //const location = useLocation(); 
-  const isTopPage = true;
+
+  const isTopPage = true
   
 
   return (
@@ -35,7 +33,7 @@ export default function Header() {
       >
         <h1>
           <Link
-            style={{ fontSize: 16, color: "#333" }}
+            style={{ fontSize: 40, color: "#333" }}
             to="/"
           >
           お散歩ぽん
@@ -48,6 +46,7 @@ export default function Header() {
             gap: 20,
           }}
         >
+
           {isTopPage && <Button as="a" href="../history">
             過去の記録
           </Button>}
