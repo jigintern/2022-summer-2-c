@@ -1,16 +1,10 @@
 import { Link } from "aleph/react";
 import { Button, Container, Divider, Grid, Input, Dimmer, Loader } from "https://esm.sh/semantic-ui-react";
-import {
-  BrowserRouter as Router,
-  useLocation
-} from "react-router-dom";
+
 
 export default function Header() {
-  // const isTopPage = window.location
-  
-  // console.log(useLocation());
-  // //const location = useLocation(); 
-  const isTopPage = true;
+   
+  const isTopPage = false;
   
 
   return (
