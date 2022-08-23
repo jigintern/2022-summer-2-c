@@ -5,12 +5,14 @@ import * as $0 from "./_404.tsx";
 import * as $1 from "./_app.tsx";
 import * as $2 from "./index.tsx";
 import * as $3 from "./todos.tsx";
-import * as $4 from "./history.tsx";
+import * as $4 from "./others.tsx";
+import * as $5 from "./history.tsx";
 
 export default {
   "/_404": $0,
   "/_app": $1,
   "/": $2,
   "/todos": $3,
-  "/history": $4,
+  "/others": $4,
+  "/history": $5,
 };

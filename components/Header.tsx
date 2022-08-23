@@ -1,8 +1,11 @@
 import { Link } from "aleph/react";
 import { Button, Container, Divider, Grid, Input, Dimmer, Loader } from "https://esm.sh/semantic-ui-react";
 
+
 export default function Header() {
-  const isTopPage = false
+  const isTopPage = true
+  
+  
   return (
     <header
       style={{
@@ -25,7 +28,7 @@ export default function Header() {
       >
         <h1>
           <Link
-            style={{ fontSize: 16, color: "#333" }}
+            style={{ fontSize: 40, color: "#333" }}
             to="/"
           >
           お散歩ぽん
@@ -38,6 +41,7 @@ export default function Header() {
             gap: 20,
           }}
         >
+
           {isTopPage && <Button as="a" href="../history">
             過去の記録
           </Button>}
