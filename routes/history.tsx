@@ -29,6 +29,9 @@ export default function Index() {
                     </Grid.Column>
                 </Grid.Row></Grid>
             </Container> */}
+            <script>
+                {/* console.log(window.location.pathname) */}
+            </script>
 
 
 

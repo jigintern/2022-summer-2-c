@@ -1,8 +1,19 @@
 import { Link } from "aleph/react";
 import { Button, Container, Divider, Grid, Input, Dimmer, Loader } from "https://esm.sh/semantic-ui-react";
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router,
+  useLocation
+} from "react-router-dom";
 
 export default function Header() {
-  const isTopPage = false
+  // const isTopPage = window.location
+  
+  console.log(useLocation());
+  //const location = useLocation(); 
+  const isTopPage = true;
+  
+
   return (
     <header
       style={{
@@ -41,6 +52,10 @@ export default function Header() {
           {isTopPage && <Button as="a" href="../history">
             過去の記録
           </Button>}
+          <script>
+            console.log(window.location);
+          </script>
+          
         </nav>
       </div>
     </header>
