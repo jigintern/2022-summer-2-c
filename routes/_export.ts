@@ -8,6 +8,7 @@ import * as $3 from "./todos.tsx";
 import * as $4 from "./others.tsx";
 import * as $5 from "./history.tsx";
 
+
 export default {
   "/_404": $0,
   "/_app": $1,
@@ -15,4 +16,5 @@ export default {
   "/todos": $3,
   "/others": $4,
   "/history": $5,
+
 };
