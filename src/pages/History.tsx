@@ -15,21 +15,33 @@ const Buttons = styled.div`
   }
 `;
 
+const Title = styled.div`
+  font-size: 30px;
+`;
+
 export const History = (): React.ReactElement => {
   const [count, setCount] = React.useState(0);
   return (
     <div>
-      <h1>Example app: Counter</h1>
-      <Count>{count}</Count>
-      <Buttons>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Increment
-        </button>
-        <button onClick={() => setCount((count) => count - 1)}>
-          Decrement
-        </button>
-      </Buttons>
-      <Footer />
+      <title>お散歩ぽん 過去の記録</title>
+
+      <div>
+        <Title>ルート</Title>
+        <p>2022/8/11 1→2</p>
+        <p>2022/8/11 2→3</p>
+        <p>2022/8/11 西山公園駅 → 展望台</p><br />
+      </div>
+
+      <div>
+        <Title>ホットスポット</Title><br />
+      </div>
+
+      <div>
+        <Title>現在のランク</Title>
+        <p>次のランクまで後~~</p>
+      </div>
+
+
     </div>
   );
 };
