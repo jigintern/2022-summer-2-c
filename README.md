@@ -4,7 +4,7 @@ main ブランチに PUSH されたら自動で Deno Deploy にデプロイさ�
 https://jigintern-2022-summer-2-c.deno.dev/
 
 # 開発
-packup index.html
+packup src/index.html
 
 # デプロイ
-packup build index.html
+packup build src/index.html
