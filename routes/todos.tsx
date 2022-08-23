@@ -56,10 +56,7 @@ export default function Todos() {
 
   return (
     <div className="w-9/10 max-w-150 mx-auto mt-15">
-      <Head>
-        <title>Todos</title>
-        <meta name="description" content="A todos app powered by Aleph.js" />
-      </Head>
+      
       <h1 className="flex items-center justify-between text-5xl font-200">
         <span>Todos</span>
         {todos.length > 0 && (
