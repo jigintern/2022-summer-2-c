@@ -1,16 +1,18 @@
-import { serve } from "aleph/server";
-import ssr from "aleph/react-ssr";
-import routes from "./routes/_export.ts";
-import unocss from "./unocss.config.ts";
+import { serve } from "https://deno.land/std@0.151.0/http/server.ts";
+import { serveDir } from "https://deno.land/std@0.151.0/http/file_server.ts";
 
-if (Deno.args.includes("--dev")) {
-  // Enable react refresh
-  Deno.env.set("REACT_REFRESH", "true");
-}
+serve(async (req) => {
+  const pathname = new URL(req.url).pathname;
+  console.log(pathname);
 
-serve({
-  baseUrl: import.meta.url,
-  router: { routes },
-  unocss,
-  ssr,
+  if (req.method === "GET" && pathname === "/welcome-message") {
+    return new Response("jigインターンへようこそ！");
+  }
+
+  return serveDir(req, {
+    fsRoot: "dist",
+    urlRoot: "",
+    showDirListing: true,
+    enableCors: true,
+  });
 });
