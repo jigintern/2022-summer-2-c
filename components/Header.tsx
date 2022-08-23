@@ -2,6 +2,7 @@ import { Link } from "aleph/react";
 import { Button, Container, Divider, Grid, Input, Dimmer, Loader } from "https://esm.sh/semantic-ui-react";
 
 export default function Header() {
+  const isTopPage = false
   return (
     <header
       style={{
@@ -37,9 +38,9 @@ export default function Header() {
             gap: 20,
           }}
         >
-          <Button as="a" href="https://deno.land/x/aleph">
+          {isTopPage && <Button as="a" href="../history">
             過去の記録
-          </Button>
+          </Button>}
         </nav>
       </div>
     </header>
