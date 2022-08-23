@@ -1,5 +1,6 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
+import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 
 export const Home = (): React.ReactElement => (
