@@ -1,17 +1,12 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
+import { Container, Grid, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
 import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 
 export const Home = (): React.ReactElement => (
-  <div>
-    <h1>
-      Example{" "}
-      <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-        React
-      </a>{" "}
-      apps
-    </h1>
+  <Container>
+    <Map></Map>
     <p>
       {"This app bundled on "}
       <a href="https://deno.land/" target="_blank" rel="noopener noreferrer">
@@ -25,5 +20,5 @@ export const Home = (): React.ReactElement => (
       </li>
     </ul>
     <Footer />
-  </div>
+  </Container>
 );
