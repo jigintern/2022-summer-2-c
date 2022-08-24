@@ -6,7 +6,7 @@ export const Footer = (): React.ReactElement => (
     <Link to="/">Home</Link>
     {"　"}
     <a
-      href="https://github.com/mryhryki/example-react-with-deno"
+      href="https://github.com/jigintern/2022-summer-2-c"
       target="_blank"
       rel="noopener noreferrer"
     >
