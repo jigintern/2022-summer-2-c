@@ -1,3 +1,4 @@
+import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
 import { useHistoryReducer, ActionTypes } from "../hooks/useHistoryRedecer.ts";
 
 export class HistoryViewModel {
@@ -9,6 +10,24 @@ export class HistoryViewModel {
         [this.state, this.dispatch] = useHistoryReducer();
         console.log(this.state);
     }
+    
+    public getHistory() {
+        const history = getStoredRouteData();
+        console.log('ヒストリー');
+        console.log(history);
+        history.then((result)=> {
+            console.log(result);
+            let historyArray: Array<number> = [];
+            result.map((value) => {
+                console.log(value.route);
+                console.log('ほげ');
+                historyArray.push(value.route);
+            });
+            console.log(historyArray);
+            console.log('ふが');
+            this.setRouteHistory(historyArray);
+        });
+    }
 
     public get routeHistory() {
         return this.state.routeHistory;
@@ -18,7 +37,7 @@ export class HistoryViewModel {
         return this.state.hotspotHistory;
     }
     
-    private setRouteHistory(value: string) {
+    private setRouteHistory(value: Array<number>) {
         console.log("set route history");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE_HISTORY, data: value});
     }
