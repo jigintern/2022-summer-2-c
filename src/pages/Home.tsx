@@ -3,22 +3,46 @@ import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 import { Container, Grid, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
 import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
+import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 
-export const Home = (): React.ReactElement => (
-  <Container>
-    <Map></Map>
-    <p>
-      {"This app bundled on "}
-      <a href="https://deno.land/" target="_blank" rel="noopener noreferrer">
-        deno
-      </a>
-      .
-    </p>
-    <ul>
-      <li>
-        <Link to="/history">History</Link>
-      </li>
-    </ul>
-    <Footer />
-  </Container>
-);
+const MapUiConteinar = styled.div`
+    position:  absolute; 
+    top: 16px;
+    left: 16px;
+    background-color: white;
+`;
+
+const Title = styled.div`
+    font-size: 20px;
+`;
+
+const button = styled.div`
+`;
+
+const word = styled.p`
+    font-size: 10px;
+`;
+
+export const Home = (): React.ReactElement => {
+  return (
+    <>
+      <Map></Map>
+      
+      <MapUiConteinar>
+        <Title>ルート決め</Title>
+        <button>ルート</button>
+        <p></p>
+        <Title>ホットスポット</Title>
+        <button 
+          onClick={() => console.log("８時をクリックした")}>
+          ８時 終了
+        </button><br/>
+        <button
+          onClick={() => console.log("１７時をクリックした")}>
+          17時 後〇〇
+          </button>
+      </MapUiConteinar >
+      <Footer/>
+    </>
+  );
+};

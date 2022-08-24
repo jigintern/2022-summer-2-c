@@ -15,6 +15,8 @@ const Buttons = styled.div`
   }
 `;
 
+
+
 export const History = (): React.ReactElement => {
   const [count, setCount] = React.useState(0);
   return (
