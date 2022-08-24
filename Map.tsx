@@ -3,8 +3,8 @@ import { GoogleMap, LoadScript, Polyline, Circle } from "https://cdn.skypack.dev
 import { HomeViewModel } from "./src/view_model/HomeViewModel.ts";
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "100vw",
+  height: "90%",
 };
 
 const center = {
