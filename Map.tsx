@@ -1,5 +1,5 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
-import { GoogleMap, LoadScript, Marker, Polyline } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
+import { GoogleMap, LoadScript, Polyline, Circle } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
 import { HomeViewModel } from "./src/view_model/HomeViewModel.ts";
 
 const containerStyle = {
@@ -11,6 +11,20 @@ const center = {
   lat: 35.9507182,
   lng: 136.1825219,
 };
+
+const options = {
+  strokeColor: '#FF0000',
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: '#FF0000',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 10,
+  zIndex: 1
+}
 
 const routePath = [
   {lat: 35.9522468, lng: 136.1754899},
@@ -27,7 +41,7 @@ const Map = () => {
         center={center}
         zoom={17}
       >
-        <Marker position={center}></Marker>
+        <Circle center={center} options={options}></Circle>
         <Polyline path={routePath}></Polyline>
       </GoogleMap>
     </LoadScript>
