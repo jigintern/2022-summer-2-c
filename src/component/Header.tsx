@@ -56,9 +56,9 @@ export const HeaderS = (): React.ReactElement => {
           }}
         >
 
-          {isTopPage && <Button as="a" href="../history">
+          {isTopPage && <Link to="/history"><Button> 
             過去の記録
-          </Button>}
+          </Button></Link>}
           
           
         </nav>
