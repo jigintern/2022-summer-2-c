@@ -6,7 +6,7 @@ export interface State {
 }
 
 interface Action {
-  type: string,
+  type: ActionTypes,
   data: any,
 }
 //------------------------------------------------------------------------------

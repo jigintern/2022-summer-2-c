@@ -1,7 +1,7 @@
 import React, { useReducer } from 'https://cdn.skypack.dev/react@17.0.2?dts';
 
 interface State {
-  routeHistory: Array<string>,
+  routeHistory: Array<number>,
   hotspotHistory: Array<string>,
 }
 
@@ -34,12 +34,12 @@ const reducer = (state: State, action: Action) => {
     case ActionTypes.CHANGE_ROUTE_HISTORY:
       return {
         ...state,
-        route: action.data,
+        routeHistory: action.data,
       };
     case ActionTypes.CHANGE_HOTSPOT_HISTORY:
       return {
         ...state,
-        hotspot: action.data,
+        hotspotHistory: action.data,
       };
     default:
       return state;

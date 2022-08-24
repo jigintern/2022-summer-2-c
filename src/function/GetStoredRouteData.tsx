@@ -7,7 +7,7 @@ const supabase = createClient('https://mocbnakwlobvatjxzjws.supabase.co', 'eyJhb
 
 
 export const getStoredRouteData = async ():Promise<any> =>{
-    const { data, error } = await supabase.from('test').select()
+    const { data, error } = await supabase.from('RouteStore').select()
     // console.log(data);
     return data;
 }
