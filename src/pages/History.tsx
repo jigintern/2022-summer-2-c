@@ -1,6 +1,7 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Footer } from "../component/footer.tsx";
+import { HeaderS } from "../component/Header.tsx";
 
 const Count = styled.div`
   text-align: center;
@@ -21,6 +22,7 @@ export const History = (): React.ReactElement => {
   const [count, setCount] = React.useState(0);
   return (
     <div>
+      <HeaderS />
       <h1>Example app: Counter</h1>
       <Count>{count}</Count>
       <Buttons>
