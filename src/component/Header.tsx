@@ -2,14 +2,23 @@ import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { Button, Container, Divider, Grid, Input, Dimmer, Loader } from "https://esm.sh/semantic-ui-react@2.1.3";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 
-import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
+
+import { Link, useLocation } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 
 
 
 
 export const HeaderS = (): React.ReactElement => {
-  const isTopPage = true
+  let isTopPage = true
+  // const location = useLocation(); // URL path や パラメータなど。JSのlocationと同じ
+  // const params = useParams();
+
+  // console.log("\n\n");
+  const a = useLocation();
+  isTopPage = (a[0] === "/history" ? false : true);
+  // const supabase = createClient('https://mocbnakwlobvatjxzjws.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vY2JuYWt3bG9idmF0anh6andzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMzAxNTYsImV4cCI6MTk3NjgwNjE1Nn0.kRrg6uD1co42RwkTB2X9w7NZj4Gt5tdJ9TYJjYwbnSM')
   
+  // console.log("\n\n");
 
   return (
     <header
@@ -50,9 +59,7 @@ export const HeaderS = (): React.ReactElement => {
           {isTopPage && <Button as="a" href="../history">
             過去の記録
           </Button>}
-          <script>
-            console.log(window.location);
-          </script>
+          
           
         </nav>
       </div>
