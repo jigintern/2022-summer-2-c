@@ -19,7 +19,13 @@ export class HomeViewModel {
         return this.state.hotspot;
     }
     
-    private setRoute(value: string) {
+    public selectRoute() {
+        // 3つの中から選ぶ
+        const route: number = Math.floor(Math.random() * 3 + 1);
+        this.setRoute(route);
+    }
+    
+    private setRoute(value: number) {
         console.log("set route");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});
     }
