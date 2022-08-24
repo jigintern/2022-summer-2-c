@@ -1,35 +1,28 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Footer } from "../component/footer.tsx";
-
-const Count = styled.div`
-  text-align: center;
-  font-size: 5rem;
-`;
-
-const Buttons = styled.div`
-  text-align: center;
-  
-  & > button {
-    margin: 0 8px;
-  }
-`;
+import { Container, Grid, Header, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
+import { HistoryViewModel } from "../view_model/HistoryViewModel.ts";
 
 export const History = (): React.ReactElement => {
-  const [count, setCount] = React.useState(0);
+  const viewModel = new HistoryViewModel();
   return (
-    <div>
-      <h1>Example app: Counter</h1>
-      <Count>{count}</Count>
-      <Buttons>
-        <button onClick={() => setCount((count) => count + 1)}>
-          Increment
-        </button>
-        <button onClick={() => setCount((count) => count - 1)}>
-          Decrement
-        </button>
-      </Buttons>
+    <Container>
+      <Header size="huge">行った場所</Header>
+      <Divider section></Divider>
+
+      <Header>ルート</Header>
+      <ul>{viewModel.routeHistory.map(item => {
+        <li key={item}>{item}</li>
+      })}</ul>
+      <Divider section></Divider>
+
+      <Header>ホットスポット</Header>
+      <ul>{viewModel.hotspotHistory.map(item => {
+        <li key={item}>{item}</li>
+      })}</ul>
+      <Divider section></Divider>
       <Footer />
-    </div>
+    </Container>
   );
 };

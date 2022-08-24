@@ -1,4 +1,4 @@
-import { useHistoryReducer } from "../hooks/useHistoryRedecer.ts";
+import { useHistoryReducer, ActionTypes } from "../hooks/useHistoryRedecer.ts";
 
 export class HistoryViewModel {
     private state;
@@ -10,21 +10,21 @@ export class HistoryViewModel {
         console.log(this.state);
     }
 
-    get routeHistory() {
+    public get routeHistory() {
         return this.state.routeHistory;
     }
     
-    get hotspotHistory() {
+    public get hotspotHistory() {
         return this.state.hotspotHistory;
     }
     
     private setRouteHistory(value: string) {
         console.log("set route history");
-        this.dispatch({type: "CHANGE_ROUTE_HISTORY", data: value});
+        this.dispatch({type: ActionTypes.CHANGE_ROUTE_HISTORY, data: value});
     }
 
     private setHotspotHistory(value: string) {
         console.log("set hotspot history");
-        this.dispatch({type: "CHANGE_HOTSPOT_HISTORY", data: value});
+        this.dispatch({type: ActionTypes.CHANGE_HOTSPOT_HISTORY, data: value});
     }
 }
