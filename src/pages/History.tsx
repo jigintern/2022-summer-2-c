@@ -3,12 +3,13 @@ import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Footer } from "../component/footer.tsx";
 import { Container, Grid, Header, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
 import { HistoryViewModel } from "../view_model/HistoryViewModel.ts";
+import { HeaderS } from "../component/Header.tsx";
 
 export const History = (): React.ReactElement => {
   const viewModel = new HistoryViewModel();
   return (
     <Container>
-      <Header size="huge">行った場所</Header>
+      <HeaderS />
       <Divider section></Divider>
 
       <Header>ルート</Header>
