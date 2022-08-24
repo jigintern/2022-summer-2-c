@@ -26,13 +26,11 @@ const options = {
   zIndex: 1
 }
 
-const routePath = [
-  {lat: 35.9522468, lng: 136.1754899},
-  {lat: 35.9507182, lng: 136.1825219}
-]
-
 const Map = () => {
   const viewModel = new HomeViewModel();
+  console.log('マップ作ったナリ');
+  console.log(viewModel);
+  console.log(viewModel.route);
   // このエラーは無視しておｋ
   return (
     <LoadScript googleMapsApiKey="AIzaSyA21hP2aaQA54UNFQFq8he2G0REvzX6Vd4">
@@ -42,7 +40,7 @@ const Map = () => {
         zoom={17}
       >
         <Circle center={center} options={options}></Circle>
-        <Polyline path={routePath}></Polyline>
+        <Polyline path={viewModel.route?.path}></Polyline>
       </GoogleMap>
     </LoadScript>
   );

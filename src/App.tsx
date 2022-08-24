@@ -3,9 +3,11 @@ import ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.2?dts";
 import { Route, Switch } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 import { Home } from "./pages/Home.tsx";
 import { History } from "./pages/History.tsx";
+import { StoreProvider } from "./hooks/store.tsx";
 
 const App = () => {
   return (
+    <StoreProvider>
     <React.Fragment>
       <Switch>
         <Route path="/history">
@@ -16,6 +18,7 @@ const App = () => {
         </Route>
       </Switch>
     </React.Fragment>
+    </StoreProvider>
   );
 };
 

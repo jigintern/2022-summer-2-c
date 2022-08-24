@@ -1,3 +1,4 @@
+import { Route } from "../data/routes.ts";
 import { useMapReducer, ActionTypes } from "../hooks/useMapReducer.ts";
 
 export class HomeViewModel {
@@ -19,6 +20,7 @@ export class HomeViewModel {
         return this.state.hotspot;
     }
     
+    /*
     public selectRoute() {
         // 3つの中から選ぶ
         const route: number = Math.floor(Math.random() * 3 + 1);
@@ -27,6 +29,11 @@ export class HomeViewModel {
     
     private setRoute(value: number) {
         console.log("set route");
+        this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});
+    }
+    */
+    
+    public setRoute(value: Route) {
         this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});
     }
 
