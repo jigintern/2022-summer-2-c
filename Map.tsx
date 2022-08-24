@@ -1,5 +1,5 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
-import { GoogleMap, LoadScript } from "https://cdn.skypack.dev/@react-google-maps/api";
+import { GoogleMap, LoadScript } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
 
 const containerStyle = {
   width: "100vw",
