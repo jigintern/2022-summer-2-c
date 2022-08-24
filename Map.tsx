@@ -2,8 +2,8 @@ import React from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { GoogleMap, LoadScript } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
 
 const containerStyle = {
-  width: "400px",
-  height: "400px",
+  width: "100vw",
+  height: "90%",
 };
 
 const center = {
