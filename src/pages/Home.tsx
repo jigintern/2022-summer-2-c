@@ -28,23 +28,11 @@ const word = styled.p`
     font-size: 10px;
 `;
 
-
-const routePath: Route = {
-  id: 2,
-  start: 1,
-  goal: 2,
-  path: [
-    {lat: 35.9522468, lng: 136.1754899},
-    {lat: 35.9507182, lng: 136.1825219}
-  ],
-}
-
 export const Home = (): React.ReactElement => {
   const viewModel = new HomeViewModel();
   console.log("ホームページ作ったナリ");
   console.log(viewModel);
   useEffect(() => {
-    viewModel.setRoute(routePath);
   },['key']);
 
   const nowTime = new Date()
@@ -77,7 +65,7 @@ export const Home = (): React.ReactElement => {
   return (
     <>
       <HeaderS />
-      <Map></Map>
+      <Map viewModel={viewModel}></Map>
       
       <MapUiConteinar>
         <Title>ルート決め</Title>

@@ -26,8 +26,8 @@ const options = {
   zIndex: 1
 }
 
-const Map = () => {
-  const viewModel = new HomeViewModel();
+const Map = (prop) => {
+  const viewModel = prop.viewModel;
   console.log('マップ作ったナリ');
   console.log(viewModel);
   console.log(viewModel.route);
@@ -40,7 +40,10 @@ const Map = () => {
         zoom={17}
       >
         <Circle center={center} options={options}></Circle>
-        <Polyline path={viewModel.route?.path}></Polyline>
+        {viewModel.route != null
+          ? <Polyline path={viewModel.route.path}></Polyline>
+          : <></>
+        }
       </GoogleMap>
     </LoadScript>
   );
