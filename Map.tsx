@@ -56,8 +56,11 @@ const routePath2 = [
   
 ]
 
-const Map = () => {
-  const viewModel = new HomeViewModel();
+const Map = (prop) => {
+  const viewModel = prop.viewModel;
+  console.log('マップ作ったナリ');
+  console.log(viewModel);
+  console.log(viewModel.route);
   // このエラーは無視しておｋ
   return (
     <LoadScript googleMapsApiKey="AIzaSyA21hP2aaQA54UNFQFq8he2G0REvzX6Vd4">
@@ -67,8 +70,11 @@ const Map = () => {
         zoom={17}
       >
         <Circle center={center} options={options}></Circle>
-        <Polyline path={routePath2}></Polyline>
-      </GoogleMap>
+        {/*viewModel.route != null*/ true
+          ? <Polyline path={routePath2}></Polyline>
+          : <></>
+        }
+        </GoogleMap>
     </LoadScript>
   );
 };

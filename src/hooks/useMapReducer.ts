@@ -1,8 +1,10 @@
 import React, { useReducer } from 'https://cdn.skypack.dev/react@17.0.2?dts';
+import { Hotspot } from "../data/hotspot.ts";
+import { Route } from "../data/routes.ts";
 
 export interface State {
-  route: string,
-  hotspot: string,
+  route: Route | null,
+  hotspot: Hotspot | null,
 }
 
 interface Action {
@@ -19,15 +21,13 @@ export const ActionTypes = {
 export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
 //------------------------------------------------------------------------------
 
-const initialState: State = {
-  route: '',
-  hotspot: '',
-}
+export const noRoute = null;
+export const noHotspot = null;
 
-// deno-lint-ignore no-inferrable-types
-export const noRoute: string = '';
-// deno-lint-ignore no-inferrable-types
-export const noHotospot: string = '';
+const initialState: State = {
+  route: noRoute,
+  hotspot: noHotspot,
+}
 
 //const matchingContext = React.createContext(initialState);
 

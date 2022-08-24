@@ -1,4 +1,4 @@
-import React from "https://cdn.skypack.dev/react@17.0.2?dts";
+import React, { useEffect } from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 import { Container, Grid, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
 import Map from "../../Map.tsx";
@@ -7,6 +7,8 @@ import { HeaderS } from "../component/Header.tsx";
 import { savingRouteData } from "../function/SavingRouteData.tsx";
 import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
+import { Route } from "../data/routes.ts";
+import { HomeViewModel } from "../view_model/HomeViewModel.ts";
 
 const MapUiConteinar = styled.div`
     position:  absolute; 
@@ -26,9 +28,13 @@ const word = styled.p`
     font-size: 10px;
 `;
 
-
-
 export const Home = (): React.ReactElement => {
+  const viewModel = new HomeViewModel();
+  console.log("ホームページ作ったナリ");
+  console.log(viewModel);
+  useEffect(() => {
+  },['key']);
+
   const nowTime = new Date()
   const startTIme8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
   const startTIme17 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 17, 0, 0)
@@ -59,7 +65,7 @@ export const Home = (): React.ReactElement => {
   return (
     <>
       <HeaderS />
-      <Map></Map>
+      <Map viewModel={viewModel}></Map>
       
       <MapUiConteinar>
         <Title>ルート決め</Title>
