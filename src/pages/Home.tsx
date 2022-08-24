@@ -12,8 +12,9 @@ import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
 
 export const Home = (): React.ReactElement => (
 
-<HeaderS />
+
   <Container>
+    <HeaderS />
     <Map></Map>
     <p>
       {"This app bundled on "}
