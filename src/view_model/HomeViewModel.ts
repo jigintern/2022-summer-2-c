@@ -83,8 +83,8 @@ export class HomeViewModel {
         this.dispatch({type: ActionTypes.CHANGE_HOTSPOT, data: value});
     }
     
-    private async setPRoute() {
-        const route = await this._repository.getRouteById(3);
+    private async setPRoute(id: number) {
+        const route = await this._repository.getRouteById(id);
         console.log('primari routeだす');
         console.log(route);
         this.setRoute(route);
