@@ -11,3 +11,9 @@ export const getStoredRouteData = async ():Promise<any> =>{
     // console.log(data);
     return data;
 }
+
+export const getStoredHotspotData = async ():Promise<any> =>{
+    const { data, error } = await supabase.from('hotSpotStore').select()
+    // console.log(data);
+    return data;
+}

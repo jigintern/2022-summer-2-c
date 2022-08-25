@@ -4,7 +4,7 @@ import { Container, Grid, Label, Button, Input, Dimmer, Loader, Segment, Divider
 import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 import { HeaderS } from "../component/Header.tsx";
-import { savingRouteData } from "../function/SavingRouteData.tsx";
+import { savingRouteData, savinghotspotData } from "../function/SavingRouteData.tsx";
 import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Route } from "../data/routes.ts";
@@ -95,17 +95,34 @@ export const Home = (): React.ReactElement => {
       <MapUiConteinar>
         <Title>ルート決め</Title>
         <button onClick={() => {
+          let route = Math.floor(Math.random() * 3.0) + 1;
           console.log('ふがふが　ルートボタン押したナリ');
+          savingRouteData(route);
           viewModel.setPRoute();
         }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
         <button 
-          onClick={() => console.log("８時をクリックした")}>
+          onClick={() => {
+            console.log("８時をクリックした");
+            let hotspot = Math.floor(Math.random() * 3.0) + 1;
+            let bumon = "08時の部";
+            if(message8 != '08時の部・・・終了しました'){
+              savinghotspotData(hotspot,bumon);
+            }
+            
+            }}>
           {message8}
         </button><br/>
         <button
-          onClick={() => console.log("１７時をクリックした")}>
+          onClick={() => {
+            console.log("１７時をクリックした");
+            let hotspot = Math.floor(Math.random() * 3.0) + 1;
+            let bumon = "17時の部";
+            if(message8 != '17時の部・・・終了しました'){
+              savinghotspotData(hotspot,bumon);
+            }
+            }}>
           {message17}
         </button>
       </MapUiConteinar >
