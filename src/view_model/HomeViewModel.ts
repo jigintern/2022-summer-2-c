@@ -1,7 +1,10 @@
 import { Hotspot } from "../data/hotspot.ts";
 import { Route } from "../data/routes.ts";
 import { useMapReducer, ActionTypes } from "../hooks/useMapReducer.ts";
+import { HotspotRepository } from "../repository/hotspotRepository.ts";
+import { RouteRepository } from "../repository/routeRepository.ts";
 
+/*
 const initialRoute: Route = {
   id: 2,
   start: 1,
@@ -33,6 +36,7 @@ const initialRoute: Route = {
       {lat: 35.951412, lng: 136.185552}
   ],
 }
+*/
 
 const initialHotspot: Hotspot = {
     name: "公園",
@@ -47,6 +51,9 @@ export class HomeViewModel {
     private state;
     private dispatch;
     
+    private routeRepository = new RouteRepository();
+    private hotspotRepository = new HotspotRepository();
+
     constructor() {
 //        [this.state, this.dispatch] = useShiritoriReducer();
         console.log("にゃほにゃほ　home view model 作ったナリ");
@@ -58,32 +65,37 @@ export class HomeViewModel {
         return this.state.route;
     }
     
-    /*
     get hotspot() {
         return this.state.hotspot;
-    }
-    */
-    get hotspot() {
-        return initialHotspot;
     }
     
     public selectRoute() {
         // 3つの中から選ぶ
-        const route: number = Math.floor(Math.random() * 3 + 1);
-        this.setRoute(route);
+        const routeId: number = Math.floor(Math.random() * 3 + 1);
+        this.setPRoute(routeId);
     }
     
-    private setRoute(value: number) {
+    private setRoute(value: Route) {
         console.log("set route");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});
     }
-    
-    public setPRoute() {
-        this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: initialRoute});
-    }
 
-    private setHotspot(value: string) {
+    private setHotspot(value: Hotspot) {
         console.log("set hotspot");
         this.dispatch({type: ActionTypes.CHANGE_HOTSPOT, data: value});
+    }
+    
+    private async setPRoute(id: number) {
+        const route = await this.routeRepository.getRouteById(id);
+        console.log('primari routeだす');
+        console.log(route);
+        this.setRoute(route);
+    }
+
+    public async setPHotspot(id: number) {
+        const hotspot = await this.hotspotRepository.getHotspotById(id);
+        console.log('primary hotspotだす');
+        console.log(hotspot);
+        this.setHotspot(hotspot);
     }
 }

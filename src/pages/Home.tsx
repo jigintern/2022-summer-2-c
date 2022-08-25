@@ -95,23 +95,15 @@ export const Home = (): React.ReactElement => {
       <MapUiConteinar>
         <Title>ルート決め</Title>
         <button onClick={() => {
-          let route = Math.floor(Math.random() * 3.0) + 1;
-          console.log('ふがふが　ルートボタン押したナリ');
-          savingRouteData(route);
-          viewModel.setPRoute();
         }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
         <button 
           onClick={() => {
             console.log("８時をクリックした");
-            let hotspot = Math.floor(Math.random() * 3.0) + 1;
-            let bumon = "08時の部";
-            if(message8 != '08時の部・・・終了しました'){
-              savinghotspotData(hotspot,bumon);
-            }
-            
-            }}>
+
+            viewModel.setPHotspot(1);
+          }}>
           {message8}
         </button><br/>
         <button
