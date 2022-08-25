@@ -1,0 +1,4 @@
+
+class RouteRepository {
+    constructor() {}
+}

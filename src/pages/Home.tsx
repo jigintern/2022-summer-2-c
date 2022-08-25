@@ -91,12 +91,18 @@ export const Home = (): React.ReactElement => {
       
       <MapUiConteinar>
         <Title>ルート決め</Title>
-        <button>ルート表示</button>
+        <button onClick={() => {
+          console.log('ふがふが　ルートボタン押したナリ');
+          viewModel.setPRoute();
+        }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
         
         <button 
-          onClick={() => console.log("８時をクリックした")}>
+          onClick={() => {
+            console.log("８時をクリックした");
+            viewModel.setPHotspot();
+          }}>
           {message8}
         </button><br/>
         <button
