@@ -37,10 +37,7 @@ const Map = (prop) => {
       <GoogleMap
         mapContainerStyle={containerStyle}
 //        center={center}
-        center={viewModel.route == null
-          ? center
-          : viewModel.route?.path[0]
-        }
+        center={center}
         zoom={17}
       >
         {viewModel.hotspot != null
