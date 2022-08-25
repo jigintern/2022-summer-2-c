@@ -75,6 +75,14 @@ export class HomeViewModel {
         this.setPRoute(routeId);
     }
     
+    get isHotspotVisible() {
+        return this.state.isHotspotVisible;
+    }
+    
+    public setIsHotspotVisible(value: boolean) {
+        this.dispatch({type: ActionTypes.SET_IS_HOTSPOT_VISIBLE, data: value});
+    }
+
     private setRoute(value: Route) {
         console.log("set route");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});

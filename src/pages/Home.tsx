@@ -116,27 +116,24 @@ export const Home = (): React.ReactElement => {
 
         <button
           onClick={() => {
-
             setShowImage("/images/lawn.jpg")
-
             console.log("８時をクリックした");
-
             viewModel.setPHotspot(1);
           }}>
           {message8}
         </button><br />
+
         <button
           onClick={() => {
-
             setShowImage("/images/animal.jpg")
-          
             console.log("１７時をクリックした");
             let hotspot = Math.floor(Math.random() * 3.0) + 1;
             let bumon = "17時の部";
             if(message8 != '17時の部・・・終了しました'){
               savinghotspotData(hotspot,bumon);
             }
-            }}>
+          }
+        }>
           {message17}
         </button>
       </MapUiConteinar >

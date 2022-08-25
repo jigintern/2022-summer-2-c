@@ -68,7 +68,7 @@ const Map = (prop) => {
         center={center}
         zoom={17}
       >
-        {viewModel.hotspot != null
+        {viewModel.hotspot != null && viewModel.isHotspotVisible
           ? <Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
           </Circle>
           : <></>
