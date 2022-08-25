@@ -1,6 +1,9 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
-import { GoogleMap, LoadScript, Polyline, Circle, InfoBox } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
+import { GoogleMap, LoadScript, Polyline, Circle, InfoBox, InfoWindow } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
 import { HomeViewModel } from "./src/view_model/HomeViewModel.ts";
+import { Container, Grid, Header, Label, Button, Input, Dimmer, Loader, Segment, Divider, Image } from "https://esm.sh/semantic-ui-react@2.1.3";
+
+
 
 const containerStyle = {
   width: "100vw",
@@ -66,11 +69,16 @@ const Map = (prop) => {
         mapContainerStyle={containerStyle}
 //        center={center}
         center={center}
-        zoom={17}
+        zoom={16}
       >
         {viewModel.hotspot != null && viewModel.isHotspotVisible
-          ? <Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
+          ? <><Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
           </Circle>
+            <InfoWindow position={viewModel.hotspot.coordinate}>
+
+          <Image src={"/images/"+viewModel.hotspot.img}  style={{ width: 80,}}></Image>
+
+          </InfoWindow></>
           : <></>
         }
         
@@ -100,6 +108,7 @@ const Map = (prop) => {
             </InfoBox> </>
           : <></>
         }
+        
         </GoogleMap>
     </LoadScript>
   );
