@@ -5,6 +5,7 @@ import { Route } from "../data/routes.ts";
 export interface State {
   route: Route | null,
   hotspot: Hotspot | null,
+  isHotspotVisible: boolean,
 }
 
 interface Action {
@@ -16,6 +17,7 @@ interface Action {
 export const ActionTypes = {
   CHANGE_ROUTE: "changeRoute",
   CHANGE_HOTSPOT: "changeHotspot",
+  SET_IS_HOTSPOT_VISIBLE: "setIsHotspotVisible",
 } as const;
 
 export type ActionTypes = typeof ActionTypes[keyof typeof ActionTypes];
@@ -27,6 +29,7 @@ export const noHotspot = null;
 const initialState: State = {
   route: noRoute,
   hotspot: noHotspot,
+  isHotspotVisible: true,
 }
 
 //const matchingContext = React.createContext(initialState);
@@ -45,6 +48,11 @@ const reducer = (state: State, action: Action) => {
       return {
         ...state,
         hotspot: action.data,
+      };
+    case ActionTypes.SET_IS_HOTSPOT_VISIBLE:
+      return {
+        ...state,
+        isHotspotVisible: action.data,
       };
     default:
       return state;

@@ -23,6 +23,7 @@ export class HotspotRepository {
             name: hotspotData.name,
             id: id,
             coordinate: hotspotData.pos,
+            img: hotspotData.img,
         }
         
         console.log(hotspot);
