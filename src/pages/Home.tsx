@@ -28,6 +28,10 @@ const word = styled.p`
     font-size: 10px;
 `;
 
+const img = styled.div`
+    
+`;
+
 export const Home = (): React.ReactElement => {
   const viewModel = new HomeViewModel();
   console.log("ホームページ作ったナリ");
@@ -38,14 +42,11 @@ export const Home = (): React.ReactElement => {
   const nowTime = new Date()
   const startTime8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
   const startTime17 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 17, 0, 0)
-  const leftTime = ''
   function difference(differenceTime: number) {
 
     return differenceTime - nowTime.getTime()
   
   }
-  console.log(difference(startTime8.getTime()))
-  console.log(difference(startTime17.getTime()))
   const difference8 = difference(startTime8.getTime())
   const difference17 = difference(startTime17.getTime())
 
@@ -54,8 +55,6 @@ export const Home = (): React.ReactElement => {
     return calculationHour / 1000 / 60 / 60
 
   }
-  console.log(hourCalculation(difference8))
-  console.log(hourCalculation(difference17))
   const calculationHour8 = hourCalculation(difference8)
   const calculationHour17 = hourCalculation(difference17)
 
@@ -64,8 +63,6 @@ export const Home = (): React.ReactElement => {
     return (calculationMinute / 1000 / 60) % 60
 
   }
-  console.log(minuteCalculation(difference8))
-  console.log(minuteCalculation(difference17))
   const calculationMinute8 = minuteCalculation(difference8)
   const calculationMinute17 = minuteCalculation(difference17)
 
@@ -97,6 +94,7 @@ export const Home = (): React.ReactElement => {
         <button>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
+        
         <button 
           onClick={() => console.log("８時をクリックした")}>
           {message8}
@@ -105,7 +103,9 @@ export const Home = (): React.ReactElement => {
           onClick={() => console.log("１７時をクリックした")}>
           {message17}
         </button>
+        <img></img>
       </MapUiConteinar >
+      <img id="image_place" src="image1.jpg"></img>
       <Footer/>
     </>
   );
