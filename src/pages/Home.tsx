@@ -4,7 +4,7 @@ import { Container, Grid, Label, Button, Image, Dimmer, Loader, Segment, Divider
 import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 import { HeaderS } from "../component/Header.tsx";
-import { savingRouteData } from "../function/SavingRouteData.tsx";
+import { savingRouteData, savinghotspotData } from "../function/SavingRouteData.tsx";
 import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Route } from "../data/routes.ts";
@@ -109,17 +109,19 @@ export const Home = (): React.ReactElement => {
         <Title>ルート決め</Title>
         <button onClick={() => {
           console.log('ふがふが　ルートボタン押したナリ');
-          viewModel.setPRoute();
+          viewModel.selectRoute();
         }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
 
         <button
           onClick={() => {
-            viewModel.setPHotspot();
 
             setShowImage("/images/lawn.jpg")
 
+            console.log("８時をクリックした");
+
+            viewModel.setPHotspot(1);
           }}>
           {message8}
         </button><br />
@@ -128,7 +130,13 @@ export const Home = (): React.ReactElement => {
 
             setShowImage("/images/animal.jpg")
           
-          }}>
+            console.log("１７時をクリックした");
+            let hotspot = Math.floor(Math.random() * 3.0) + 1;
+            let bumon = "17時の部";
+            if(message8 != '17時の部・・・終了しました'){
+              savinghotspotData(hotspot,bumon);
+            }
+            }}>
           {message17}
         </button>
       </MapUiConteinar >

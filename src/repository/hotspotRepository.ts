@@ -1,33 +1,32 @@
-import { Route } from "../data/routes.ts";
 import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
+import { Hotspot } from "../data/hotspot.ts";
 
 const supabase = createClient('https://lrtcnqpjrvrjmrxvrwmf.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxydGNucXBqcnZyam1yeHZyd21mIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEzMTY0MTcsImV4cCI6MTk3Njg5MjQxN30.pNsuW-HdfdrTe2A5hz2jtuppU5A6dZIcUWNKmCz38bk')
-export class RouteRepository {
+export class HotspotRepository {
     constructor() {}
     
-    public async getRouteById(id: number): Promise<Route> {
+    public async getHotspotById(id: number): Promise<Hotspot> {
         console.log('デデー取得');
-        const { data, error } = await supabase.from('RouteLine').select();
+        const { data, error } = await supabase.from('hotSpot').select();
         console.log('デデー取得');
         console.log(data);
         
-        let routeData;
+        let hotspotData;
         data.map((item) => {
             if(item.id == id) {
-                routeData = item;
+                hotspotData = item;
             }
         });
-        console.log(routeData);
+        console.log(hotspotData);
         
-        const route: Route = {
+        const hotspot: Hotspot = {
+            name: hotspotData.name,
             id: id,
-            start: /*routeData.start*/ 1,
-            goal: /*routeData.goal*/ 1,
-            path: routeData.route,
+            coordinate: hotspotData.pos,
         }
         
-        console.log(route);
+        console.log(hotspot);
         
-        return route;
+        return hotspot;
     }
 }
