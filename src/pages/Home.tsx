@@ -134,7 +134,7 @@ export const Home = (): React.ReactElement => {
 
             console.log("８時をクリックした");
 
-            viewModel.setPHotspot(1);
+            viewModel.setPHotspot(3);
           }}>
           {message8}
         </button><br />
@@ -165,7 +165,7 @@ export const Home = (): React.ReactElement => {
         </button>
       </MapUiConteinar >
 
-      {imageUrl &&
+      {/* {imageUrl &&
         
           <ImgUiConteinar>
             <Img src={imageUrl}>
@@ -181,7 +181,7 @@ export const Home = (): React.ReactElement => {
 
         </ImgUiConteinar>
         
-      }
+      } */}
       <Footer />
     </>
   );

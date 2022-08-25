@@ -72,8 +72,13 @@ const Map = (prop) => {
         zoom={16}
       >
         {viewModel.hotspot != null
-          ? <Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
+          ? <><Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
           </Circle>
+            <InfoWindow position={viewModel.hotspot.coordinate}>
+
+          <Image src="/images/lawn.jpg" style={{ width: 80,}}></Image>
+
+          </InfoWindow></>
           : <></>
         }
         
@@ -103,13 +108,7 @@ const Map = (prop) => {
             </InfoBox> </>
           : <></>
         }
-        <InfoWindow
-          position={center}
-        >
-          
-          <Image src="/images/lawn.jpg" style={{ width: 100, }}></Image>         
-          
-        </InfoWindow>
+        
         </GoogleMap>
     </LoadScript>
   );
