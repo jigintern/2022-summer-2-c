@@ -12,6 +12,7 @@ export const History = (): React.ReactElement => {
   useEffect(() => {
     console.log('ヒストリー');
     viewModel.getHistory();
+    viewModel.getHotspotHistory();
   },['key']);
 
   return (

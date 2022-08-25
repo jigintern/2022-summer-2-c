@@ -6,9 +6,16 @@ const supabase = createClient('https://lrtcnqpjrvrjmrxvrwmf.supabase.co', 'eyJhb
 // export
 
 export const savingRouteData = async (
-  goal1: number,
-  goal2: number,
+  routenum: number
 ): Promise<any> => {
 
-  const { data, error } = await supabase.from('RouteStore').insert([{start: goal1, goal: goal2}]);
+  const { data, error } = await supabase.from('RouteStore').insert([{route:routenum}]);
+};
+
+export const savinghotspotData = async (
+  hotspotnum: number,
+  str_bumon: string
+): Promise<any> => {
+
+  const { data, error } = await supabase.from('hotSpotStore').insert([{hotspot:hotspotnum, bumon:str_bumon}]);
 };
