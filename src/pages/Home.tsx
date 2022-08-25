@@ -36,30 +36,55 @@ export const Home = (): React.ReactElement => {
   },['key']);
 
   const nowTime = new Date()
-  const startTIme8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
-  const startTIme17 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 17, 0, 0)
+  const startTime8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
+  const startTime17 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 17, 0, 0)
   const leftTime = ''
-  const difference17 = startTIme17.getTime() - nowTime.getTime() 
-  const calculationHour17 = difference17 / 1000 / 60 / 60
-  const calculationMinute17 = (difference17 / 1000 / 60) % 60
-  const difference8 = startTIme8.getTime() - nowTime.getTime() 
-  const calculationHour8 = difference8 / 1000 / 60 / 60
-  const calculationMinute8 = (difference8 / 1000 / 60) % 60
+  function difference(differenceTime: number) {
+
+    return differenceTime - nowTime.getTime()
+  
+  }
+  console.log(difference(startTime8.getTime()))
+  console.log(difference(startTime17.getTime()))
+  const difference8 = difference(startTime8.getTime())
+  const difference17 = difference(startTime17.getTime())
+
+  function hourCalculation(calculationHour: number) {
+
+    return calculationHour / 1000 / 60 / 60
+
+  }
+  console.log(hourCalculation(difference8))
+  console.log(hourCalculation(difference17))
+  const calculationHour8 = hourCalculation(difference8)
+  const calculationHour17 = hourCalculation(difference17)
+
+  function minuteCalculation(calculationMinute: number) {
+
+    return (calculationMinute / 1000 / 60) % 60
+
+  }
+  console.log(minuteCalculation(difference8))
+  console.log(minuteCalculation(difference17))
+  const calculationMinute8 = minuteCalculation(difference8)
+  const calculationMinute17 = minuteCalculation(difference17)
+
   const flag8 = Math.sign(calculationHour8)
   const flag17 = Math.sign(calculationHour17)
   let message8 = ''
   let message17 = ''
 
   if (flag8 == -1) {
-    message8 = '８時 終了'
+    message8 = '08時の部・・・終了しました'
+
   } else{
-    message8 = '後' + Math.floor(calculationHour8) + '時間' + Math.floor(calculationMinute8) + '分'
+    message8 = '08時の部・・・後' + Math.floor(calculationHour8) + '時間' + Math.floor(calculationMinute8) + '分'
   }
 
   if (flag17 == -1) {
-    message17 = '１７時 終了'
+    message17 = '17時の部・・・終了しました'
   } else {
-    message17 = '後' + Math.floor(calculationHour17) + '時間' + Math.floor(calculationMinute17) + '分'
+    message17 = '17時の部・・・後' + Math.floor(calculationHour17) + '時間' + Math.floor(calculationMinute17) + '分'
   }
 
   return (
@@ -69,7 +94,7 @@ export const Home = (): React.ReactElement => {
       
       <MapUiConteinar>
         <Title>ルート決め</Title>
-        <button>ルート</button>
+        <button>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
         <button 
