@@ -1,5 +1,5 @@
 import React from "https://cdn.skypack.dev/react@17.0.2?dts";
-import { GoogleMap, LoadScript, Polyline, Circle } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
+import { GoogleMap, LoadScript, Polyline, Circle, InfoBox } from "https://cdn.skypack.dev/@react-google-maps/api?dts";
 import { HomeViewModel } from "./src/view_model/HomeViewModel.ts";
 
 const containerStyle = {
@@ -12,7 +12,7 @@ const center = {
   lng: 136.1825219,
 };
 
-const options = {
+const hotspotOptions = {
   strokeColor: '#FF0000',
   strokeOpacity: 0.8,
   strokeWeight: 2,
@@ -25,6 +25,34 @@ const options = {
   radius: 10,
   zIndex: 1
 }
+const startOptions = {
+  strokeColor: '#0000FF',
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: '#0000FF',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 20,
+  zIndex: 1
+}
+const goalOptions = {
+  strokeColor: '#00FF00',
+  strokeOpacity: 0.8,
+  strokeWeight: 2,
+  fillColor: '#00FF00',
+  fillOpacity: 0.35,
+  clickable: false,
+  draggable: false,
+  editable: false,
+  visible: true,
+  radius: 20,
+  zIndex: 1
+}
+const infoboxOptions = { closeBoxURL: '', enableEventPropagation: true };
+
 const Map = (prop) => {
   const viewModel: HomeViewModel = prop.viewModel;
   console.log('マップ作ったナリ');
@@ -41,13 +69,35 @@ const Map = (prop) => {
         zoom={17}
       >
         {viewModel.hotspot != null
-          ? <Circle center={viewModel.hotspot.coordinate} options={options}>
+          ? <Circle center={viewModel.hotspot.coordinate} options={hotspotOptions}>
           </Circle>
           : <></>
         }
         
         {viewModel.route != null
-          ? <Polyline path={viewModel.route.path}></Polyline>
+          ? <><Polyline path={viewModel.route.path}></Polyline>
+            <Circle center={viewModel.route.path[0]} options={startOptions}></Circle>
+            <InfoBox
+              options={infoboxOptions}
+              position={viewModel.route.path[0]}
+            >
+              <div style={{ backgroundColor: 'blue', opacity: 0.75, padding: 12 }}>
+                <div style={{ fontSize: 16, }}>
+                  Start
+                </div>
+              </div>
+            </InfoBox>
+            <Circle center={viewModel.route.path.slice(-1)[0]} options={goalOptions}></Circle>
+            <InfoBox
+              options={infoboxOptions}
+              position={viewModel.route.path.slice(-1)[0]}
+            >
+              <div style={{ backgroundColor: 'green', opacity: 0.75, padding: 12 }}>
+                <div style={{ fontSize: 16, }}>
+                  Goal
+                </div>
+              </div>
+            </InfoBox> </>
           : <></>
         }
         </GoogleMap>

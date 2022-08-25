@@ -1,6 +1,7 @@
 import { Hotspot } from "../data/hotspot.ts";
 import { Route } from "../data/routes.ts";
 import { useMapReducer, ActionTypes } from "../hooks/useMapReducer.ts";
+import { HotspotRepository } from "../repository/hotspotRepository.ts";
 import { RouteRepository } from "../repository/routeRepository.ts";
 
 /*
@@ -50,7 +51,8 @@ export class HomeViewModel {
     private state;
     private dispatch;
     
-    private _repository = new RouteRepository();
+    private routeRepository = new RouteRepository();
+    private hotspotRepository = new HotspotRepository();
 
     constructor() {
 //        [this.state, this.dispatch] = useShiritoriReducer();
@@ -84,13 +86,16 @@ export class HomeViewModel {
     }
     
     private async setPRoute(id: number) {
-        const route = await this._repository.getRouteById(id);
+        const route = await this.routeRepository.getRouteById(id);
         console.log('primari routeだす');
         console.log(route);
         this.setRoute(route);
     }
 
-    public setPHotspot() {
-        this.setHotspot(initialHotspot);
+    public async setPHotspot(id: number) {
+        const hotspot = await this.hotspotRepository.getHotspotById(id);
+        console.log('primary hotspotだす');
+        console.log(hotspot);
+        this.setHotspot(hotspot);
     }
 }
