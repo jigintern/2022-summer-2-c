@@ -96,7 +96,7 @@ export const Home = (): React.ReactElement => {
         <Title>ルート決め</Title>
         <button onClick={() => {
           console.log('ふがふが　ルートボタン押したナリ');
-          viewModel.setPRoute();
+          viewModel.selectRoute();
         }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
