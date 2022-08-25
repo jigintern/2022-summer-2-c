@@ -30,12 +30,17 @@ const Map = (prop) => {
   console.log('マップ作ったナリ');
   console.log(viewModel);
   console.log(viewModel.route);
+  console.log('マップ作った後');
   // このエラーは無視しておｋ
   return (
     <LoadScript googleMapsApiKey="AIzaSyA21hP2aaQA54UNFQFq8he2G0REvzX6Vd4">
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+//        center={center}
+        center={viewModel.route == null
+          ? center
+          : viewModel.route?.path[0]
+        }
         zoom={17}
       >
         {viewModel.hotspot != null
