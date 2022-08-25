@@ -58,13 +58,8 @@ export class HomeViewModel {
         return this.state.route;
     }
     
-    /*
     get hotspot() {
         return this.state.hotspot;
-    }
-    */
-    get hotspot() {
-        return initialHotspot;
     }
     
     public selectRoute() {
@@ -73,17 +68,21 @@ export class HomeViewModel {
         this.setRoute(route);
     }
     
-    private setRoute(value: number) {
+    private setRoute(value: Route) {
         console.log("set route");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: value});
     }
-    
-    public setPRoute() {
-        this.dispatch({type: ActionTypes.CHANGE_ROUTE, data: initialRoute});
-    }
 
-    private setHotspot(value: string) {
+    private setHotspot(value: Hotspot) {
         console.log("set hotspot");
         this.dispatch({type: ActionTypes.CHANGE_HOTSPOT, data: value});
+    }
+    
+    public setPRoute() {
+        this.setRoute(initialRoute);
+    }
+
+    public setPHotspot() {
+        this.setHotspot(initialHotspot);
     }
 }
