@@ -1,18 +1,49 @@
-import { serve } from "https://deno.land/std@0.151.0/http/server.ts";
-import { serveDir } from "https://deno.land/std@0.151.0/http/file_server.ts";
+import { serve } from "https://deno.land/std@0.125.0/http/server.ts";
 
-serve(async (req) => {
-  const pathname = new URL(req.url).pathname;
-  console.log(pathname);
+const PORT = 8080;
+const ToIndexPaths = ["/", "/history"];
+const decoder = new TextDecoder();
 
-  if (req.method === "GET" && pathname === "/welcome-message") {
-    return new Response("jigインターンへようこそ！");
+const getContentType = (pathname: string): string => {
+  const extension = pathname.substring(pathname.lastIndexOf(".") + 1);
+  switch (extension) {
+    case "html":
+      return "text/html";
+    case "js":
+      return "text/javascript";
+    case "png":
+      return "image/png";
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "ico":
+      return "image/x-icon";
+    default:
+      return "application/octet-stream";
+  }
+};
+
+const handler = async (request: Request): Promise<Response> => {
+  const url = new URL(request.url);
+  const pathname = ToIndexPaths.find((p) => p === url.pathname) != null
+    ? "/index.html"
+    : url.pathname;
+
+  const fileData = await Deno.readFile(`./${pathname}`).catch(() => null);
+  if (fileData != null) {
+    const contentType = getContentType(pathname);
+    const body = contentType.startsWith("text/")
+      ? decoder.decode(fileData)
+      : fileData;
+    return new Response(body, {
+      headers: {
+        "content-type": contentType,
+      },
+    });
   }
 
-  return serveDir(req, {
-    fsRoot: "dist",
-    urlRoot: "",
-    showDirListing: true,
-    enableCors: true,
-  });
-});
+  return new Response(null, { status: 404 });
+};
+
+console.log(`Listening on http://localhost:${PORT}/`);
+await serve(handler);
