@@ -101,7 +101,10 @@ export const Home = (): React.ReactElement => {
         <p></p>
         <Title>ホットスポット</Title>
         <button 
-          onClick={() => console.log("８時をクリックした")}>
+          onClick={() => {
+            console.log("８時をクリックした");
+            viewModel.setPHotspot();
+          }}>
           {message8}
         </button><br/>
         <button
