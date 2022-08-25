@@ -138,6 +138,7 @@ export const Home = (): React.ReactElement => {
           }}>
           {message8}
         </button><br />
+
         <button
           onClick={() => {
 
@@ -161,6 +162,7 @@ export const Home = (): React.ReactElement => {
             //   savinghotspotData(hotspot,bumon);
             // }
             }}>
+
           {message17}
         </button>
       </MapUiConteinar >
