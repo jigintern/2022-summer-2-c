@@ -55,6 +55,8 @@ export const Home = (): React.ReactElement => {
 
   const [imageUrl, setShowImage] = useState("");
 
+  const hotspotNumber = Math.floor(Math.random() * 3.0) + 1
+
   const nowTime = new Date()
   const startTime8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
   const startTime17 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 17, 0, 0)
@@ -100,6 +102,9 @@ export const Home = (): React.ReactElement => {
     message17 = '17時の部・・・後' + Math.floor(calculationHour17) + '時間' + Math.floor(calculationMinute17) + '分'
   }
 
+  
+
+
   return (
     <>
       <HeaderS />
@@ -117,7 +122,15 @@ export const Home = (): React.ReactElement => {
         <button
           onClick={() => {
 
-            setShowImage("/images/lawn.jpg")
+            //setShowImage("/images/lawn.jpg")
+            // hotspotNumber = Math.floor(Math.random() * 3.0) + 1
+            if (hotspotNumber === 1) {
+              setShowImage("/images/lawn.jpg")
+            } else if (hotspotNumber === 2) {
+              setShowImage("/images/observationTower.jpg")
+            } else {
+              setShowImage("/images/garden.jpg")
+            }
 
             console.log("８時をクリックした");
 
@@ -128,14 +141,25 @@ export const Home = (): React.ReactElement => {
         <button
           onClick={() => {
 
-            setShowImage("/images/animal.jpg")
-          
-            console.log("１７時をクリックした");
-            let hotspot = Math.floor(Math.random() * 3.0) + 1;
-            let bumon = "17時の部";
-            if(message8 != '17時の部・・・終了しました'){
-              savinghotspotData(hotspot,bumon);
+            //setShowImage("/images/animal.jpg")
+
+            // hotspotNumber = Math.floor(Math.random() * 3.0) + 1
+            // console.log("hotdpot")
+            // console.log(hotspotNumber);
+            if (hotspotNumber === 1) {
+              setShowImage("/images/lawn.jpg")
+            } else if (hotspotNumber === 2) {
+              setShowImage("/images/observationTower.jpg")
+            } else {
+              setShowImage("/images/garden.jpg")
             }
+
+            console.log("１７時をクリックした");
+            // let hotspot = Math.floor(Math.random() * 3.0) + 1;
+            // let bumon = "17時の部";
+            // if(message8 != '17時の部・・・終了しました'){
+            //   savinghotspotData(hotspot,bumon);
+            // }
             }}>
           {message17}
         </button>
