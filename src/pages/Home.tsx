@@ -1,6 +1,6 @@
-import React, { useEffect } from "https://cdn.skypack.dev/react@17.0.2?dts";
+import React, { useEffect, useState } from "https://cdn.skypack.dev/react@17.0.2?dts";
 import { Link } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
-import { Container, Grid, Label, Button, Input, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
+import { Container, Grid, Label, Button, Image, Dimmer, Loader, Segment, Divider } from "https://esm.sh/semantic-ui-react@2.1.3";
 import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 import { HeaderS } from "../component/Header.tsx";
@@ -21,15 +21,29 @@ const Title = styled.div`
     font-size: 20px;
 `;
 
-const button = styled.div`
-`;
-
-const word = styled.p`
+const Word = styled.p`
     font-size: 10px;
 `;
 
-const img = styled.div`
-    
+const Img = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    `;
+
+const ImgUiConteinar = styled.div`
+    position:  absolute; 
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+`;
+
+const FixRightTopButton = styled.button`
+    position:  absolute;
+    top: 8px;
+    Right: 8px;
 `;
 
 export const Home = (): React.ReactElement => {
@@ -37,7 +51,9 @@ export const Home = (): React.ReactElement => {
   console.log("ホームページ作ったナリ");
   console.log(viewModel);
   useEffect(() => {
-  },['key']);
+  }, ['key']);
+
+  const [imageUrl, setShowImage] = useState("");
 
   const nowTime = new Date()
   const startTime8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
@@ -45,7 +61,7 @@ export const Home = (): React.ReactElement => {
   function difference(differenceTime: number) {
 
     return differenceTime - nowTime.getTime()
-  
+
   }
   const difference8 = difference(startTime8.getTime())
   const difference17 = difference(startTime17.getTime())
@@ -74,7 +90,7 @@ export const Home = (): React.ReactElement => {
   if (flag8 == -1) {
     message8 = '08時の部・・・終了しました'
 
-  } else{
+  } else {
     message8 = '08時の部・・・後' + Math.floor(calculationHour8) + '時間' + Math.floor(calculationMinute8) + '分'
   }
 
@@ -88,8 +104,8 @@ export const Home = (): React.ReactElement => {
     <>
       <HeaderS />
       <Map viewModel={viewModel}></Map>
-      
       <MapUiConteinar>
+
         <Title>ルート決め</Title>
         <button onClick={() => {
           console.log('ふがふが　ルートボタン押したナリ');
@@ -97,22 +113,44 @@ export const Home = (): React.ReactElement => {
         }}>ルート表示</button>
         <p></p>
         <Title>ホットスポット</Title>
-        
-        <button 
+
+        <button
           onClick={() => {
-            console.log("８時をクリックした");
             viewModel.setPHotspot();
+
+            setShowImage("/images/lawn.jpg")
+
           }}>
           {message8}
-        </button><br/>
+        </button><br />
         <button
-          onClick={() => console.log("１７時をクリックした")}>
+          onClick={() => {
+
+            setShowImage("/images/animal.jpg")
+          
+          }}>
           {message17}
         </button>
-        <img></img>
       </MapUiConteinar >
-      <img id="image_place" src="image1.jpg"></img>
-      <Footer/>
+
+      {imageUrl &&
+        
+          <ImgUiConteinar>
+            <Img src={imageUrl}>
+            </Img>
+            <FixRightTopButton
+              onClick={() => {
+
+                setShowImage("")
+
+              }}>
+              ✖️
+            </FixRightTopButton>
+
+        </ImgUiConteinar>
+        
+      }
+      <Footer />
     </>
   );
 };
