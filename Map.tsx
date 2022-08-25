@@ -76,7 +76,7 @@ const Map = (prop) => {
           </Circle>
             <InfoWindow position={viewModel.hotspot.coordinate}>
 
-          <Image src="/images/lawn.jpg" style={{ width: 80,}}></Image>
+          <Image src={"/images/"+viewModel.hotspot.img}  style={{ width: 80,}}></Image>
 
           </InfoWindow></>
           : <></>

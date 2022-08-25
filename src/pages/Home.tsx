@@ -134,7 +134,7 @@ export const Home = (): React.ReactElement => {
 
             console.log("８時をクリックした");
 
-            viewModel.setPHotspot(3);
+            viewModel.setPHotspot(hotspotNumber);
           }}>
           {message8}
         </button><br />
