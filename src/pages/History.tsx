@@ -25,7 +25,7 @@ export const History = (): React.ReactElement => {
       <Header>ルート</Header>
       {viewModel.routeHistory.length != 0
         ? <ul>{viewModel.routeHistory.map((item) =>
-          <li>{item.timestamp}　　ルート{item.id}</li>
+          <li>　　{item.timestamp}　　ルート{item.id}</li>
         )}</ul>
         : <p>履歴がないぞい</p>
       }
@@ -34,7 +34,7 @@ export const History = (): React.ReactElement => {
       <Header>ホットスポット</Header>
       {viewModel.hotspotHistory.length != 0
         ? <ul>{viewModel.hotspotHistory.map((item) =>
-          <li>{item.timestamp}　　{item.name}</li>
+          <li>　　{item.timestamp}　　{item.name}</li>
         )}</ul>
         : <p>履歴がないぞい</p>
       }
