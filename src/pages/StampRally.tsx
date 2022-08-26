@@ -93,7 +93,7 @@ export const StampRally = (): React.ReactElement => {
         >
           {viewModel.stampRallySpots.map((item)=>
             <><InfoBox options={infoboxOptions} position={item.coordinate}>
-              <div style={{ backgroundColor: 'red',opacity: 0.75,padding: 2 }}>
+              <div style={{ backgroundColor: item.color,opacity: 0.75,padding: 2 }}>
                 <div style={{ fontSize: 10,}}>{item.name}</div>
               </div>
             </InfoBox>
