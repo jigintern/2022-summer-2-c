@@ -1,10 +1,41 @@
-import { getStoredRouteData, getStoredHotspotData } from "../function/GetStoredRouteData.tsx";
+import { coordinate } from "../data/routes.ts";
 import { ActionTypes, useStampRallyReducer } from "../hooks/useStampRallyReducer.ts";
 
+interface StampRallySpot {
+    name: string,
+    coordinate: coordinate,
+}
 export class StampRallyViewModel {
     private state;
     private dispatch;
     
+    stampRallySpots: Array<StampRallySpot> = [
+        {
+            name: "エントランス",
+            coordinate: { lat: 35.950120, lng: 136.181966 },
+        },
+        {
+            name: "芝生",
+            coordinate: { lat: 35.950757, lng: 136.182010 },
+        },
+        {
+            name: "結び",
+            coordinate: { lat: 35.949916, lng: 136.181114 },
+        },
+        {
+            name: "動物園",
+            coordinate: { lat: 35.950683, lng: 136.180895 },
+        },
+        {
+            name: "展望台",
+            coordinate: { lat: 35.952301, lng: 136.181081 },
+        },
+        {
+            name: "庭",
+            coordinate: { lat: 35.950543, lng: 136.184630 },
+        },
+    ]
+
     constructor() {
         console.log("にゃほにゃほ　stamp rally view model 作ったナリ");
         [this.state, this.dispatch] = useStampRallyReducer();
