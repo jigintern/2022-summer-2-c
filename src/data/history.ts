@@ -5,4 +5,10 @@ export type sanpo = {
     timestamp: EpochTimeStamp,
 };
 
-export type history = Array<sanpo>;
+export type RouteHistory = Array<sanpo>;
+
+export type HotspotHistory = {
+    id: number,
+    timestamp: any,
+    name: string,
+}
