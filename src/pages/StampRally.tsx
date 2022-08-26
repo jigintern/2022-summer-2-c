@@ -30,14 +30,6 @@ const Img = styled.img`
     object-fit: contain;
     `;
 
-// const Image = styled.img`
-//     width: 100%;
-//     height: 100%;
-//     object-fit: contain;
-//     //circular
-//     `;
-
-
 const containerStyle = {
   width: "100vw",
   height: "30%",
@@ -80,6 +72,8 @@ export const StampRally = (): React.ReactElement => {
   return (
     <Container textAlign="center">
       <HeaderS />
+      <br />
+      <br />
       <Divider section></Divider>
 
       <Header>スタンプラリー</Header>
@@ -104,6 +98,9 @@ export const StampRally = (): React.ReactElement => {
       </LoadScript>
 
       <Container textAlign="center">
+        <br />
+        <br />
+        <br />
         <Image circular size="large" centered src={imageUrl1} style={{ width: 300  }} onClick={() => {
           console.log('No.1')
           setShowImage1("images/fountain.jpg")
@@ -129,36 +126,7 @@ export const StampRally = (): React.ReactElement => {
           setShowImage6("images/garden.jpg")
         }}></Image><br />
 
-        
-        {/* <StampButton
-          onClick={() => {
-
-            setShowImage("")
-
-          }}>
-          ✖️
-        </StampButton> */}
-
       </Container>
-
-      {/* {imageUrl &&
-
-        <ImgUiConteinar>
-          <Img src={imageUrl}>
-          </Img>
-          <StampButton
-            onClick={() => {
-
-              setShowImage("")
-
-            }}>
-            ✖️
-          </StampButton>
-
-        </ImgUiConteinar>
-
-      } */}
-
       <Footer />
     </Container>
   );
