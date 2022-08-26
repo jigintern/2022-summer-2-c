@@ -23,7 +23,7 @@ export const History = (): React.ReactElement => {
       <Header>ルート</Header>
       {viewModel.routeHistory.length != 0
         ? <ul>{viewModel.routeHistory.map((item) =>
-          <li>{item}</li>
+          <li>ルート{item}</li>
         )}</ul>
         : <p>履歴がないぞい</p>
       }
