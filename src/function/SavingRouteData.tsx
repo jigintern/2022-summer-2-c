@@ -26,3 +26,8 @@ export const hotspotChoice = async(bumon: number): Promise<any> =>{
   console.log(bumon+"のデータは"+hotspotNumber);
 
 }
+
+export const StampLallyStatusUpdate = async(spot: number, status: boolean): Promise<any> =>{
+  const { data, error } = await supabase.from('StampLally').update({push:status}).match({id:spot});
+
+}
