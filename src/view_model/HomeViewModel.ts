@@ -1,5 +1,6 @@
 import { Hotspot } from "../data/hotspot.ts";
 import { Route } from "../data/routes.ts";
+import { savingRouteData } from "../function/SavingRouteData.tsx";
 import { useMapReducer, ActionTypes } from "../hooks/useMapReducer.ts";
 import { HotspotRepository } from "../repository/hotspotRepository.ts";
 import { RouteRepository } from "../repository/routeRepository.ts";
@@ -72,6 +73,7 @@ export class HomeViewModel {
     public selectRoute() {
         // 3つの中から選ぶ
         const routeId: number = Math.floor(Math.random() * 3 + 1);
+        savingRouteData(routeId);
         this.setPRoute(routeId);
     }
     
