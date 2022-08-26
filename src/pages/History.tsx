@@ -32,7 +32,7 @@ export const History = (): React.ReactElement => {
       <Header>ホットスポット</Header>
       {viewModel.hotspotHistory.length != 0
         ? <ul>{viewModel.hotspotHistory.map((item) =>
-          <li>{item}</li>
+          <li>{item.timestamp}　　{item.name}</li>
         )}</ul>
         : <p>履歴がないぞい</p>
       }
