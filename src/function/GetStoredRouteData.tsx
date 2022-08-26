@@ -24,3 +24,9 @@ export const getManagedHotspot = async ():Promise<any> =>{
     return data;
 }
 
+export const getStampLallyStatus = async ():Promise<any> =>{
+    const { data, error } = await supabase.from('StampLally').select()
+    // console.log(data);
+    return data;
+}
+
