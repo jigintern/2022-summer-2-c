@@ -7,7 +7,6 @@ import { Link, useLocation } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 
 
 
-
 export const HeaderS = (): React.ReactElement => {
   let isTopPage = true
   // const location = useLocation(); // URL path や パラメータなど。JSのlocationと同じ
@@ -17,6 +16,8 @@ export const HeaderS = (): React.ReactElement => {
   const a = useLocation();
   isTopPage = (a[0] === "/history" ? false : true);
   isTopPage = (a[0] === "/stamp_rally" ? false : true);
+
+
   // const supabase = createClient('https://mocbnakwlobvatjxzjws.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vY2JuYWt3bG9idmF0anh6andzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMzAxNTYsImV4cCI6MTk3NjgwNjE1Nn0.kRrg6uD1co42RwkTB2X9w7NZj4Gt5tdJ9TYJjYwbnSM')
   
   // console.log("\n\n");
@@ -24,7 +25,7 @@ export const HeaderS = (): React.ReactElement => {
   return (
     <header
       style={{
-        position: "sticky",
+        position: (a[0] === "/stamp_rally" ? "absolute" : "sticky"),
         top: 0,
         width: "100%",
         height: 80,
