@@ -5,7 +5,7 @@ import Map from "../../Map.tsx";
 import { Footer } from "../component/footer.tsx";
 import { HeaderS } from "../component/Header.tsx";
 import { savingRouteData, savinghotspotData } from "../function/SavingRouteData.tsx";
-import { getStoredRouteData } from "../function/GetStoredRouteData.tsx";
+import { getStoredRouteData, getManagedHotspot } from "../function/GetStoredRouteData.tsx";
 import styled from "https://cdn.skypack.dev/styled-components@5.3.3?dts";
 import { Route } from "../data/routes.ts";
 import { HomeViewModel } from "../view_model/HomeViewModel.ts";
@@ -55,7 +55,25 @@ export const Home = (): React.ReactElement => {
 
   const [imageUrl, setShowImage] = useState("");
 
-  const hotspotNumber = Math.floor(Math.random() * 3.0) + 1
+  let hotspotNumber;
+  let hotspotNumber17;
+  getManagedHotspot().then((result)=>{
+    let hotspotNowArray: Array<object> = [];
+    result.map((value) => {
+      hotspotNowArray.push(value);
+    });
+    // hotspotNumber = hotspotNowArray[1];
+    // hotspotNumber17 = hotspotNowArray[0];
+    for(let i = 0;i<hotspotNowArray.length;i++){
+      if(hotspotNowArray[i].id == 1){
+        hotspotNumber = hotspotNowArray[i].Location;
+      }
+      if(hotspotNowArray[i].id == 2){
+        hotspotNumber17 = hotspotNowArray[i].Location;
+      }
+    }
+  })
+
 
   const nowTime = new Date()
   const startTime8 = new Date(nowTime.getFullYear(), nowTime.getMonth(), nowTime.getDate(), 8, 0, 0)
@@ -133,6 +151,7 @@ export const Home = (): React.ReactElement => {
             }
 
             console.log("８時をクリックした");
+            console.log(hotspotNumber);
 
             viewModel.setPHotspot(hotspotNumber);
           }}>
@@ -147,21 +166,22 @@ export const Home = (): React.ReactElement => {
             // hotspotNumber = Math.floor(Math.random() * 3.0) + 1
             // console.log("hotdpot")
             // console.log(hotspotNumber);
-            if (hotspotNumber === 1) {
+            if (hotspotNumber17 === 1) {
               setShowImage("/images/lawn.jpg")
-            } else if (hotspotNumber === 2) {
+            } else if (hotspotNumber17 === 2) {
               setShowImage("/images/observationTower.jpg")
             } else {
               setShowImage("/images/garden.jpg")
             }
 
             console.log("１７時をクリックした");
+            console.log(hotspotNumber17);
             // let hotspot = Math.floor(Math.random() * 3.0) + 1;
             // let bumon = "17時の部";
             // if(message8 != '17時の部・・・終了しました'){
             //   savinghotspotData(hotspot,bumon);
             // }
-            viewModel.setPHotspot(hotspotNumber);
+            viewModel.setPHotspot(hotspotNumber17);
             }}>
 
           {message17}
