@@ -43,7 +43,7 @@ export const HeaderS = (): React.ReactElement => {
       >
         <h1>
           <Link
-            style={{ fontSize: 40, color: "#333" }}
+            style={{ fontSize: 25, color: "#333" }}
             to="/"
           >
           お散歩ぽん
