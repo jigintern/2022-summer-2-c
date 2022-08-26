@@ -18,12 +18,14 @@ export const History = (): React.ReactElement => {
   return (
     <Container>
       <HeaderS />
+      <br />
+      <br />
       <Divider section></Divider>
 
       <Header>ルート</Header>
       {viewModel.routeHistory.length != 0
         ? <ul>{viewModel.routeHistory.map((item) =>
-          <li>ルート{item}</li>
+          <li>{item.timestamp}　　ルート{item.id}</li>
         )}</ul>
         : <p>履歴がないぞい</p>
       }

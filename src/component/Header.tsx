@@ -25,7 +25,7 @@ export const HeaderS = (): React.ReactElement => {
   return (
     <header
       style={{
-        position: (a[0] === "/stamp_rally" ? "absolute" : "sticky"),
+        position: ((a[0] === "/stamp_rally" || a[0] === "/history") ? "absolute" : "sticky"),
         top: 0,
         width: "100%",
         height: 80,
