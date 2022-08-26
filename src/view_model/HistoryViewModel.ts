@@ -1,5 +1,13 @@
+import { HotspotHistory, RouteHistory } from "../data/history.ts";
 import { getStoredRouteData, getStoredHotspotData } from "../function/GetStoredRouteData.tsx";
 import { useHistoryReducer, ActionTypes } from "../hooks/useHistoryRedecer.ts";
+
+
+const hotspots: Array<string> = [
+    "展望台",
+    "下段の庭",
+    "芝生広場",
+];
 
 export class HistoryViewModel {
     private state;
@@ -17,11 +25,15 @@ export class HistoryViewModel {
         console.log(history);
         history.then((result)=> {
             console.log(result);
-            let historyArray: Array<number> = [];
+            let historyArray: Array<RouteHistory> = [];
             result.map((value) => {
                 console.log(value.route);
                 console.log('ほげ');
-                historyArray.push(value.route);
+                const l = value.created_at;
+                historyArray.push({
+                    id: value.route,
+                    timestamp: this.year(l)+"年" + this.mon(l)+"月" + this.day(l)+"日",
+                });
             });
             console.log(historyArray);
             console.log('ふが');
@@ -33,11 +45,16 @@ export class HistoryViewModel {
         const history = getStoredHotspotData();
         history.then((result)=> {
             console.log(result);
-            let historyArray: Array<number> = [];
+            let historyArray: Array<HotspotHistory> = [];
             result.map((value) => {
                 console.log(value.hotspot);
+                const s = value.created_at;
                 console.log('ほげ2');
-                historyArray.push(value.hotspot);
+                historyArray.push({
+                    id: value.hotspot,
+                    name: hotspots[value.hotspot - 1],
+                    timestamp: this.year(s)+"年" + this.mon(s)+"月" + this.day(s)+"日",
+                });
             });
             console.log(historyArray);
             console.log('ふが2');
@@ -56,13 +73,29 @@ export class HistoryViewModel {
         return this.state.hotspotHistory;
     }
     
-    private setRouteHistory(value: Array<number>) {
+    private setRouteHistory(value: Array<RouteHistory>) {
         console.log("set route history");
         this.dispatch({type: ActionTypes.CHANGE_ROUTE_HISTORY, data: value});
     }
 
-    private setHotspotHistory(value: Array<number>) {
+    private setHotspotHistory(value: Array<HotspotHistory>) {
         console.log("set hotspot history");
         this.dispatch({type: ActionTypes.CHANGE_HOTSPOT_HISTORY, data: value});
+    }
+    
+    private year(s: string) {
+        return s[0] + s[1] + s[2] + s[3];
+    }
+    private mon(s: string) {
+        return s[5] + [6];
+    }
+    private day(s: string) {
+        return s[8] + s[9];
+    }
+    private hour(s: string) {
+        return 
+    }
+    private min(s: string) {
+        return 
     }
 }

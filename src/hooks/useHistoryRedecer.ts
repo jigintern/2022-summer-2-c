@@ -1,8 +1,9 @@
 import React, { useReducer } from 'https://cdn.skypack.dev/react@17.0.2?dts';
+import { HotspotHistory, RouteHistory } from '../data/history.ts';
 
 interface State {
-  routeHistory: Array<number>,
-  hotspotHistory: Array<string>,
+  routeHistory: Array<RouteHistory>,
+  hotspotHistory: Array<HotspotHistory>,
 }
 
 interface Action {
