@@ -154,7 +154,7 @@ export const Home = (): React.ReactElement => {
             console.log(hotspotNumber);
 
             if(message8 != '08時の部・・・終了しました'){
-              savinghotspotData(hotspot,bumon);
+              savinghotspotData(hotspotNumber,"8時の部");
             }
 
             viewModel.setPHotspot(hotspotNumber);
@@ -183,7 +183,7 @@ export const Home = (): React.ReactElement => {
             // let hotspot = Math.floor(Math.random() * 3.0) + 1;
             // let bumon = "17時の部";
             if(message17 != '17時の部・・・終了しました'){
-              savinghotspotData(hotspot,bumon);
+              savinghotspotData(hotspotNumber17,"17時の部");
             }
             viewModel.setPHotspot(hotspotNumber17);
             }}>
