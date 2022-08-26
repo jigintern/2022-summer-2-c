@@ -17,3 +17,10 @@ export const getStoredHotspotData = async ():Promise<any> =>{
     // console.log(data);
     return data;
 }
+
+export const getManagedHotspot = async ():Promise<any> =>{
+    const { data, error } = await supabase.from('hotSpotNow').select()
+    // console.log(data);
+    return data;
+}
+

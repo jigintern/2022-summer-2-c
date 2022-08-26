@@ -161,6 +161,7 @@ export const Home = (): React.ReactElement => {
             // if(message8 != '17時の部・・・終了しました'){
             //   savinghotspotData(hotspot,bumon);
             // }
+            viewModel.setPHotspot(hotspotNumber);
             }}>
 
           {message17}

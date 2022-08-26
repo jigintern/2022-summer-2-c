@@ -16,6 +16,7 @@ export const HeaderS = (): React.ReactElement => {
   // console.log("\n\n");
   const a = useLocation();
   isTopPage = (a[0] === "/history" ? false : true);
+  isTopPage = (a[0] === "/stamp_rally" ? false : true);
   // const supabase = createClient('https://mocbnakwlobvatjxzjws.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vY2JuYWt3bG9idmF0anh6andzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMzAxNTYsImV4cCI6MTk3NjgwNjE1Nn0.kRrg6uD1co42RwkTB2X9w7NZj4Gt5tdJ9TYJjYwbnSM')
   
   // console.log("\n\n");
@@ -60,7 +61,9 @@ export const HeaderS = (): React.ReactElement => {
             過去の記録
           </Button></Link>}
           
-          
+          {isTopPage && <Link to="/stamp_rally"><Button> 
+            スタンプラリー
+          </Button></Link>}
         </nav>
       </div>
     </header>
