@@ -4,6 +4,7 @@ import { Route, Switch } from "https://cdn.skypack.dev/wouter@2.7.5?dts";
 import { Home } from "./pages/Home.tsx";
 import { History } from "./pages/History.tsx";
 import { StoreProvider } from "./hooks/store.tsx";
+import { StampRally } from "./pages/StampRally.tsx";
 
 const App = () => {
   return (
@@ -12,6 +13,9 @@ const App = () => {
       <Switch>
         <Route path="/history">
           <History />
+        </Route>
+        <Route path="/stamp_rally">
+          <StampRally />
         </Route>
         <Route path="/">
           <Home />
