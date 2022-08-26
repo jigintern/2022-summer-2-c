@@ -20,7 +20,9 @@ export const StampRally = (): React.ReactElement => {
 
       <Header>ルート</Header>
       <Container textAlign="center">
-        <Image circular size="medium" src="images/animal.jpg"></Image>
+        <Image circular size="medium" src="images/animal.jpg" onClick={()=>{
+          viewModel.stampEntrance();
+        }}></Image>
         <Image circular size="medium" src="images/fountain.jpg"></Image>
         <Image circular size="medium" src="images/garden.jpg"></Image>
         <Image circular size="medium" src="images/lawn.jpg"></Image>
