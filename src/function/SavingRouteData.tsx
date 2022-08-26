@@ -19,3 +19,15 @@ export const savinghotspotData = async (
 
   const { data, error } = await supabase.from('hotSpotStore').insert([{hotspot:hotspotnum, bumon:str_bumon}]);
 };
+
+export const hotspotChoice = async(bumon: number): Promise<any> =>{
+  let hotspotNumber = Math.floor(Math.random() * 3.0) + 1;
+  const { data, error } = await supabase.from('hotSpotNow').update({Location:hotspotNumber}).match({id:bumon});
+  console.log(bumon+"のデータは"+hotspotNumber);
+
+}
+
+export const StampLallyStatusUpdate = async(spot: number, status: boolean): Promise<any> =>{
+  const { data, error } = await supabase.from('StampLally').update({push:status}).match({id:spot});
+
+}
